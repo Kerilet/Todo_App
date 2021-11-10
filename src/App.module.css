@@ -1,0 +1,45 @@
+.App {
+  text-align: center;
+  color: #b2b4cd;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.todoTitle {
+  font-size: 52px;
+  color: #fff;
+  margin-left: 600px;
+  position: absolute;
+  padding-top: 100px;
+  font-weight: 700;
+}
+
+.sunDesktop {
+  margin-left: 325px;
+  position: absolute;
+  padding-top: 100px;
+  font-weight: 700;
+}
+
+.bgDesktop {  
+  width: 100%;
+  display: flex;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.todoInput input {
+  background-color: #25273c;
+  border: none;
+  outline: none;
+  width: 536px;
+}
+
+.attribution {
+  display: none;
+}
