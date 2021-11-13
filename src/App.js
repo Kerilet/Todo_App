@@ -12,23 +12,23 @@ function App() {
       </div>
       <div><img src="./bg-desktop-dark.jpg" alt="bg-desktop-dark" className={style.bgDesktop}/></div>
 
-      <div>
-        <div>{num} items left</div>
         <div className={style.todoList}>
           <ul>
             <li><input type="checkbox" className={style.todoCheckbox} />Task Number One</li>
             <li><input type="checkbox" className={style.todoCheckbox} />Task Number Two</li>
             <li><input type="checkbox" className={style.todoCheckbox} />Task Number Three</li>
             <li><input type="checkbox" className={style.todoCheckbox} />Task Number Four</li>
+            <li><input type="checkbox" className={style.todoCheckbox} />Task Number Five</li>
+            <li><input type="checkbox" className={style.todoCheckbox} />Task Number Six</li>
           </ul>
         </div>
-        <div className="optionsContainer">
-          <div>All</div>
-          <div>Active</div>
-          <div>Completed</div>         
+        <div className={style.optionsContainer}>
+        <div>{num} items left</div>
+          All
+          Active
+          Completed    
+        <div>Clear Completed</div>     
         </div>
-        <div>Clear Completed</div>
-      </div>
 
 
 

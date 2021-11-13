@@ -69,6 +69,18 @@
   appearance: none;
 }
 
+.optionsContainer {
+  display: flex;
+  background-color: #25273c;  
+  max-width: 475px;
+  border-radius: 0px 0px 7px 7px;
+  margin-left: 405px;
+  justify-content: space-around;
+  padding-bottom: 10px;
+  padding-top: 15px;
+  margin-bottom: 50px;
+}
+
 .attribution {
   display: none;
 }
