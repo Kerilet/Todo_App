@@ -1,32 +1,33 @@
 .App {
   text-align: center;
   color: #b2b4cd;
-}
+  background: url("./bg-desktop-dark.jpg") no-repeat;}
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
+.mainContainer {
+  max-width: 540px;
+  width: 100%;
+  margin: auto;
+}
+
+.todoHeader {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 70px;
+}
+
 .todoTitle {
   font-size: 52px;
   color: #fff;
-  margin-left: 400px;
-  position: absolute;
-  padding-top: 70px;
   font-weight: 700;
 }
 
 .sunDesktop {
-  margin-left: 220px;
-  position: absolute;
-  padding-top: 70px;
   font-weight: 700;
-}
-
-.bgDesktop {  
-  width: 100%;
-  display: flex;
 }
 
 .App-link {
@@ -34,51 +35,87 @@
 }
 
 .todoInput {
-  position: absolute;
-  padding-top: 150px;
-  margin-left: 405px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  margin-top: 50px;
+  background-color: #25273c;
+  border-radius: 7px;
+  -webkit-box-shadow: 0px 13px 27px 3px rgba(0,0,0,0.42); 
+  box-shadow: 0px 13px 27px 3px rgba(0,0,0,0.42);
 }
 
 .todoInput input {
-  background-color: #25273c;
   border: none;
   outline: none;
-  width: 475px;
+  width: calc(100% - 70px);
   height: 50px;
-  border-radius: 7px;
   color: #b2b4cd;
-  font-family: 'Josefin Sans';
+  font-size: 18px;
+  background: transparent;
 }
+
 
 .todoList {
   background-color: #25273c;
-  max-width: 475px;
   border-radius: 7px;
-  margin-left: 405px;
+  max-width: 545px;
+  width: 100%;
+  margin-top: 40px;
+  -webkit-box-shadow: 0px 24px 23px 8px rgba(0,0,0,0.45); 
+  box-shadow: 0px 24px 23px 8px rgba(0,0,0,0.45);
 }
 
 .todoList li {
-  display: flex;
-  justify-content: right;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #f00;
-  padding-top: 15px;
+  border-bottom: 1px solid #37394e;
+  padding-top: 7px;
+  padding-bottom: 7px;
 }
 
-.todoList .todoCheckbox {
-  appearance: none;
+.todoList .taskName{
+  font-size: 18px;
+  padding-top: 10px;
+  margin-left: 50px;
+  height: 30px;
+  text-align: left;
+  margin-top: 5px;
 }
 
 .optionsContainer {
+  color: #595a6e;
   display: flex;
+  justify-content: space-between;  
+  padding: 20px;
   background-color: #25273c;  
-  max-width: 475px;
+  height: 15px;
   border-radius: 0px 0px 7px 7px;
-  margin-left: 405px;
-  justify-content: space-around;
-  padding-bottom: 10px;
-  padding-top: 15px;
-  margin-bottom: 50px;
+  font-size: 14px;
+}
+
+
+
+
+.optionsContainer .filters{
+  width: 170px;
+  display: flex;
+  justify-content: space-between;
+}
+.optionsContainer .filters li{
+  display: inline;
+}
+.optionsContainer .filters li a{
+  color: #595a6e;
+}
+
+.optionsContainer .filters li a:hover, .optionsContainer .filters li a.active{
+  color: #FFF;
+}
+
+
+.dragDrop {
+  padding-top: 50px;
+  margin: auto;
+  color: #595a6e;
+  padding-bottom: 30px;
 }
 
 .attribution {
