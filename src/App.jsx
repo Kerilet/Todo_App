@@ -28,39 +28,20 @@ const App = function () {
           <Checkbox />
           <input type="text" />
         </div>
-
-        <div>
-          <TodoList />
-          {/* <li>
-      <Checkbox />
-      <div className={style.taskName}>Task Number Two</div>
-    </li>
-    <li>
-      <Checkbox />
-      <div className={style.taskName}>Task Number Three</div>
-    </li>
-    <li>
-      <Checkbox />
-      <div className={style.taskName}>Task Number Four</div>
-    </li>
-    <li>
-      <Checkbox />
-      <div className={style.taskName}>Task Number Five</div>
-    </li>
-    <li>
-      <Checkbox />
-      <div className={style.taskName}>Task Number Six</div>
-    </li> */}
-        </div>
-
-        <div className={style.optionsContainer}>
-          <div className={style.totalItems}>
-            {getTotal}
-            {' '}
-            items left
+        <div className={style.listNOptions}>
+          <div>
+            <TodoList />
           </div>
-          <Filters />
-          <div className={style.clearAll}>Clear Completed</div>
+
+          <div className={style.optionsContainer}>
+            <div className={style.totalItems}>
+              {getTotal}
+              {' '}
+              items left
+            </div>
+            <Filters />
+            <div className={style.clearAll}>Clear Completed</div>
+          </div>
         </div>
       </div>
       <div className={style.dragDrop}>Drag and drop to reorder list</div>

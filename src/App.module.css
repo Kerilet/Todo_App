@@ -1,7 +1,9 @@
 .App {
   text-align: center;
   color: #b2b4cd;
-  background: url("./bg-desktop-dark.jpg") no-repeat;}
+  background: url("./bg-desktop-dark.jpg") repeat-x;
+  background-position: top center;
+}
 
 .App-logo {
   height: 40vmin;
@@ -63,6 +65,11 @@
   height: 15px;
   border-radius: 0px 0px 7px 7px;
   font-size: 14px;
+}
+
+.listNOptions {
+  -webkit-box-shadow: 0px 24px 23px 8px rgba(0,0,0,0.45);
+  box-shadow: 0px 24px 23px 8px rgba(0,0,0,0.45);
 }
 
 
