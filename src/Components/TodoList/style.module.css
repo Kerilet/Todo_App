@@ -1,0 +1,23 @@
+.todoList {
+  background-color: #25273c;
+  border-radius: 7px;
+  max-width: 545px;
+  width: 100%;
+  margin-top: 40px;
+
+}
+
+.todoList li {
+  border-bottom: 1px solid #37394e;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.todoList .taskName{
+  font-size: 18px;
+  padding-top: 10px;
+  margin-left: 50px;
+  height: 30px;
+  text-align: left;
+  margin-top: 5px;
+}

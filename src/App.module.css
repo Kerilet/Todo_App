@@ -1,7 +1,9 @@
 .App {
   text-align: center;
   color: #b2b4cd;
-  background: url("./bg-desktop-dark.jpg") no-repeat;}
+  background: url("./bg-desktop-dark.jpg") repeat-x;
+  background-position: top center;
+}
 
 .App-logo {
   height: 40vmin;
@@ -40,7 +42,7 @@
   margin-top: 50px;
   background-color: #25273c;
   border-radius: 7px;
-  -webkit-box-shadow: 0px 13px 27px 3px rgba(0,0,0,0.42); 
+  -webkit-box-shadow: 0px 13px 27px 3px rgba(0,0,0,0.42);
   box-shadow: 0px 13px 27px 3px rgba(0,0,0,0.42);
 }
 
@@ -54,60 +56,20 @@
   background: transparent;
 }
 
-
-.todoList {
-  background-color: #25273c;
-  border-radius: 7px;
-  max-width: 545px;
-  width: 100%;
-  margin-top: 40px;
-  -webkit-box-shadow: 0px 24px 23px 8px rgba(0,0,0,0.45); 
-  box-shadow: 0px 24px 23px 8px rgba(0,0,0,0.45);
-}
-
-.todoList li {
-  border-bottom: 1px solid #37394e;
-  padding-top: 7px;
-  padding-bottom: 7px;
-}
-
-.todoList .taskName{
-  font-size: 18px;
-  padding-top: 10px;
-  margin-left: 50px;
-  height: 30px;
-  text-align: left;
-  margin-top: 5px;
-}
-
 .optionsContainer {
   color: #595a6e;
   display: flex;
-  justify-content: space-between;  
+  justify-content: space-between;
   padding: 20px;
-  background-color: #25273c;  
+  background-color: #25273c;
   height: 15px;
   border-radius: 0px 0px 7px 7px;
   font-size: 14px;
 }
 
-
-
-
-.optionsContainer .filters{
-  width: 170px;
-  display: flex;
-  justify-content: space-between;
-}
-.optionsContainer .filters li{
-  display: inline;
-}
-.optionsContainer .filters li a{
-  color: #595a6e;
-}
-
-.optionsContainer .filters li a:hover, .optionsContainer .filters li a.active{
-  color: #FFF;
+.listNOptions {
+  -webkit-box-shadow: 0px 24px 23px 8px rgba(0,0,0,0.45);
+  box-shadow: 0px 24px 23px 8px rgba(0,0,0,0.45);
 }
 
 

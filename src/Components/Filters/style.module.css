@@ -1,0 +1,15 @@
+.filters{
+  width: 170px;
+  display: flex;
+  justify-content: space-between;
+}
+.filters li{
+  display: inline;
+}
+.filters li a{
+  color: #595a6e;
+}
+
+.filters li a:hover, .filters li a.active{
+  color: #FFF;
+}
