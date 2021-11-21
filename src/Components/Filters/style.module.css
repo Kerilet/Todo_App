@@ -13,3 +13,7 @@
 .filters li a:hover, .filters li a.active{
   color: #FFF;
 }
+
+.themeIndicator {
+  display: none;
+}

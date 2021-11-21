@@ -9,11 +9,11 @@ export default () => {
       <li>
         <a href="javascript;" className={style.active}>
           All
-          {theme}
         </a>
       </li>
       <li><a href="javascript;">Active</a></li>
       <li><a href="javascript;">Completed</a></li>
+      <div className={style.themeIndicator}>{theme}</div>
     </ul>
   );
 };

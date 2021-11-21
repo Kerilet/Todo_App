@@ -1,7 +1,8 @@
+/* eslint-disable max-len */
 /* eslint-disable import/no-named-as-default */
 /* eslint-disable import/no-named-as-default-member */
 /* eslint-disable func-names */
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Context } from './context';
 import Checkbox from './Components/Checkbox';
 import style from './App.module.css';
@@ -9,8 +10,16 @@ import Filters from './Components/Filters';
 import TodoList from './Components/TodoList';
 
 const App = function () {
+  const [todoInfo, setTodoInfo] = useState('');
+
+  const addNewTodo = (ev) => {
+    ev.preventDefault();
+    const { value } = ev.target;
+    setTodoInfo(value);
+  };
+
   const {
-    theme, toggleTheme, addTodo, getTotal,
+    theme, addTodo, getTotal,
   } = useContext(Context);
   return (
     <div className={[style.App, theme].join(' ')}>
@@ -25,8 +34,10 @@ const App = function () {
         </div>
 
         <div className={style.todoInput}>
-          <Checkbox />
-          <input type="text" />
+          <form onSubmit={() => addTodo(`${todoInfo}`)}>
+            <Checkbox />
+            <input type="text" onChange={addNewTodo} />
+          </form>
         </div>
         <div className={style.listNOptions}>
           <div>
@@ -45,9 +56,10 @@ const App = function () {
         </div>
       </div>
       <div className={style.dragDrop}>Drag and drop to reorder list</div>
-      <div>{theme}</div>
+      {/* <div>{theme}</div>
       <div><button type="button" onClick={toggleTheme}>Toggle theme</button></div>
-      <div><button type="button" onClick={() => addTodo(`Todo number ${getTotal}`)}>Add todo</button></div>
+      // eslint-disable-next-line max-len
+      <div><button type="button" onClick={() => addTodo(`Todo number ${getTotal}`)}>Add todo</button></div> */}
 
       <div className={style.attribution}>
         Challenge by
