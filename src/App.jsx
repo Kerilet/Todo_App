@@ -10,17 +10,25 @@ import Filters from './Components/Filters';
 import TodoList from './Components/TodoList';
 
 const App = function () {
+  const {
+    theme, addTodo, getTotal,
+  } = useContext(Context);
   const [todoInfo, setTodoInfo] = useState('');
 
-  const addNewTodo = (ev) => {
+  const changeTodo = (ev) => {
     ev.preventDefault();
     const { value } = ev.target;
     setTodoInfo(value);
   };
 
-  const {
-    theme, addTodo, getTotal,
-  } = useContext(Context);
+  const submitTodo = (ev) => {
+    ev.preventDefault();
+    if (todoInfo) {
+      addTodo(todoInfo);
+      setTodoInfo('');
+    }
+  };
+
   return (
     <div className={[style.App, theme].join(' ')}>
       <div className={style.mainContainer}>
@@ -34,9 +42,9 @@ const App = function () {
         </div>
 
         <div className={style.todoInput}>
-          <form onSubmit={() => addTodo(`${todoInfo}`)}>
+          <form onSubmit={submitTodo}>
             <Checkbox />
-            <input type="text" onChange={addNewTodo} />
+            <input type="text" onChange={changeTodo} value={todoInfo} />
           </form>
         </div>
         <div className={style.listNOptions}>

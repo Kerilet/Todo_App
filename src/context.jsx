@@ -14,10 +14,14 @@ export default function ctx({ children }) {
   // Todos
   const [todos, setTodos] = useState([{ title: 'Todo 1', completed: false, order: 1 }]);
 
-  const addTodo = (ev) => {
-    const { value } = ev.target;
+  const addTodo = (title) => {
+    const todo = {
+      title,
+      completed: false,
+      order: todos.length + 1,
+    };
     const newTodos = [...todos];
-    newTodos.push({ value });
+    newTodos.push(todo);
     setTodos(newTodos);
   };
 
