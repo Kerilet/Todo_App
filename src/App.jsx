@@ -1,14 +1,36 @@
+/* eslint-disable max-len */
 /* eslint-disable import/no-named-as-default */
 /* eslint-disable import/no-named-as-default-member */
 /* eslint-disable func-names */
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import { Context } from './context';
 import Checkbox from './Components/Checkbox';
 import style from './App.module.css';
+import Filters from './Components/Filters';
+import TodoList from './Components/TodoList';
 
 const App = function () {
-  const num = Math.floor(Math.random() * 30);
+  const {
+    theme, addTodo, getTotal,
+  } = useContext(Context);
+  const [todoInfo, setTodoInfo] = useState('');
+
+  const changeTodo = (ev) => {
+    ev.preventDefault();
+    const { value } = ev.target;
+    setTodoInfo(value);
+  };
+
+  const submitTodo = (ev) => {
+    ev.preventDefault();
+    if (todoInfo) {
+      addTodo(todoInfo);
+      setTodoInfo('');
+    }
+  };
+
   return (
-    <div className={style.App}>
+    <div className={[style.App, theme].join(' ')}>
       <div className={style.mainContainer}>
 
         <div className={style.todoHeader}>
@@ -20,57 +42,32 @@ const App = function () {
         </div>
 
         <div className={style.todoInput}>
-          <Checkbox />
-          <input type="text" />
+          <form onSubmit={submitTodo}>
+            <Checkbox />
+            <input type="text" onChange={changeTodo} value={todoInfo} />
+          </form>
         </div>
-
-        <div>
-          <div className={style.todoList}>
-            <ul>
-              <li>
-                <Checkbox />
-                <div className={style.taskName}>Task Number One</div>
-              </li>
-              <li>
-                <Checkbox />
-                <div className={style.taskName}>Task Number Two</div>
-              </li>
-              <li>
-                <Checkbox />
-                <div className={style.taskName}>Task Number Three</div>
-              </li>
-              <li>
-                <Checkbox />
-                <div className={style.taskName}>Task Number Four</div>
-              </li>
-              <li>
-                <Checkbox />
-                <div className={style.taskName}>Task Number Five</div>
-              </li>
-              <li>
-                <Checkbox />
-                <div className={style.taskName}>Task Number Six</div>
-              </li>
-            </ul>
+        <div className={style.listNOptions}>
+          <div>
+            <TodoList />
           </div>
 
           <div className={style.optionsContainer}>
             <div className={style.totalItems}>
-              {num}
+              {getTotal}
               {' '}
               items left
             </div>
-            <ul className={style.filters}>
-              <li><a href="javascript;" className={style.active}>All</a></li>
-              <li><a href="javascript;">Active</a></li>
-              <li><a href="javascript;">Completed</a></li>
-            </ul>
+            <Filters />
             <div className={style.clearAll}>Clear Completed</div>
           </div>
         </div>
-
-        <div className={style.dragDrop}>Drag and drop to reorder list</div>
       </div>
+      <div className={style.dragDrop}>Drag and drop to reorder list</div>
+      {/* <div>{theme}</div>
+      <div><button type="button" onClick={toggleTheme}>Toggle theme</button></div>
+      // eslint-disable-next-line max-len
+      <div><button type="button" onClick={() => addTodo(`Todo number ${getTotal}`)}>Add todo</button></div> */}
 
       <div className={style.attribution}>
         Challenge by

@@ -7,9 +7,12 @@ extends:
 parserOptions:
   ecmaFeatures:
     jsx: true
-  ecmaVersion: 13
+  ecmaVersion: 8
   sourceType: module
 plugins:
   - react
-rules: 
+rules:
   react/jsx-filename-extension: 0
+  no-unsafe-optional-chaining: 0
+  no-nonoctal-decimal-escape: 0
+  react/function-component-definition: 0
