@@ -1,18 +1,23 @@
+/* eslint-disable max-len */
 import React, { useContext } from 'react';
 import { Context } from '../../context';
 import style from './style.module.css';
 import Checkbox from '../Checkbox';
 
 export default () => {
-  const { todos } = useContext(Context);
-
+  const {
+    todos, removeTodo, editTodo,
+  } = useContext(Context);
   return (
     <div className={style.todoList}>
       <ul>
-        {todos.map((todo) => (
+        {todos.map((todo, order) => (
           <li>
-            <Checkbox />
-            <div className={style.taskName}>{todo.title}</div>
+            <div className={style.taskGrid}>
+              <Checkbox />
+              <input className={style.taskName} onChange={() => editTodo(order, todo.title)} defaultValue={todo.title} />
+              <button type="button" aria-label="removeTodo" onClick={() => removeTodo(order)} className={style.taskDelete}><img alt="" src="../../icon-cross.svg" /></button>
+            </div>
           </li>
         ))}
       </ul>

@@ -2,7 +2,7 @@
 /* eslint-disable import/no-named-as-default */
 /* eslint-disable import/no-named-as-default-member */
 /* eslint-disable func-names */
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Context } from './context';
 import Checkbox from './Components/Checkbox';
 import style from './App.module.css';
@@ -11,23 +11,8 @@ import TodoList from './Components/TodoList';
 
 const App = function () {
   const {
-    theme, addTodo, getTotal,
+    theme, getTotal, changeTodo, submitTodo, todoInfo,
   } = useContext(Context);
-  const [todoInfo, setTodoInfo] = useState('');
-
-  const changeTodo = (ev) => {
-    ev.preventDefault();
-    const { value } = ev.target;
-    setTodoInfo(value);
-  };
-
-  const submitTodo = (ev) => {
-    ev.preventDefault();
-    if (todoInfo) {
-      addTodo(todoInfo);
-      setTodoInfo('');
-    }
-  };
 
   return (
     <div className={[style.App, theme].join(' ')}>
@@ -64,10 +49,6 @@ const App = function () {
         </div>
       </div>
       <div className={style.dragDrop}>Drag and drop to reorder list</div>
-      {/* <div>{theme}</div>
-      <div><button type="button" onClick={toggleTheme}>Toggle theme</button></div>
-      // eslint-disable-next-line max-len
-      <div><button type="button" onClick={() => addTodo(`Todo number ${getTotal}`)}>Add todo</button></div> */}
 
       <div className={style.attribution}>
         Challenge by

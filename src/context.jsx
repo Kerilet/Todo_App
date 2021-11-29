@@ -1,5 +1,9 @@
+/* eslint-disable max-len */
+/* eslint-disable no-plusplus */
 /* eslint-disable react/jsx-no-constructed-context-values */
-import React, { createContext, useState, useMemo } from 'react';
+import React, {
+  createContext, useState, useEffect, useMemo,
+} from 'react';
 
 export const Context = createContext();
 
@@ -12,7 +16,25 @@ export default function ctx({ children }) {
   };
 
   // Todos
-  const [todos, setTodos] = useState([{ title: 'Todo 1', completed: false, order: 1 }]);
+  const todoArrayString = window.localStorage.getItem('todos') || '[]';
+  const todoArray = JSON.parse(todoArrayString);
+  const [todos, setTodos] = useState(todoArray);
+  const [todoInfo, setTodoInfo] = useState('');
+
+  const changeTodo = (ev) => {
+    ev.preventDefault();
+    const { value } = ev.target;
+    setTodoInfo(value);
+  };
+
+  const editTodo = (i, todoTitle) => {
+    for (let x = 0; x < todos.length; x++) {
+      console.log('here');
+      todos[i].title = todoTitle;
+      const todosString = JSON.stringify(todos);
+      window.localStorage.setItem('todos', todosString);
+    }
+  };
 
   const addTodo = (title) => {
     const todo = {
@@ -25,10 +47,31 @@ export default function ctx({ children }) {
     setTodos(newTodos);
   };
 
+  const submitTodo = (ev) => {
+    ev.preventDefault();
+    if (todoInfo) {
+      addTodo(todoInfo);
+      setTodoInfo('');
+    }
+  };
+
+  const removeTodo = (i) => {
+    setTodos(() => {
+      const temp = [...todos];
+      temp.splice(i, 1);
+      return temp;
+    });
+  };
+
+  useEffect(() => {
+    const todosString = JSON.stringify(todos);
+    window.localStorage.setItem('todos', todosString);
+  }, [todos]);
+
   const getTotal = useMemo(() => todos.length);
 
   const values = {
-    theme, toggleTheme, todos, addTodo, getTotal,
+    theme, toggleTheme, todos, todoInfo, setTodoInfo, addTodo, getTotal, removeTodo, changeTodo, submitTodo, editTodo,
   };
 
   return (
