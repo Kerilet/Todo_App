@@ -28,12 +28,9 @@ export default function ctx({ children }) {
   };
 
   const editTodo = (i, todoTitle) => {
-    for (let x = 0; x < todos.length; x++) {
-      console.log('here');
-      todos[i].title = todoTitle;
-      const todosString = JSON.stringify(todos);
-      window.localStorage.setItem('todos', todosString);
-    }
+    const temp = [...todos];
+    temp[i].title = todoTitle;
+    setTodos(temp);
   };
 
   const addTodo = (title) => {
@@ -56,11 +53,9 @@ export default function ctx({ children }) {
   };
 
   const removeTodo = (i) => {
-    setTodos(() => {
-      const temp = [...todos];
-      temp.splice(i, 1);
-      return temp;
-    });
+    const temp = [...todos];
+    temp.splice(i, 1);
+    setTodos(temp);
   };
 
   useEffect(() => {

@@ -33,6 +33,8 @@
   background-color: #25273c;
   border-radius: 7px;
   color: #b2b4cd;
+  outline: none;
+  border: none;
 }
 
 .todoList .taskName::placeholder {
