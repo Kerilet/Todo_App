@@ -10,16 +10,16 @@ export default () => {
   } = useContext(Context);
   return (
     <div className={style.todoList}>
-      <ul>
-        {todos.map((todo, i) => (
-          <li>
+      <ul data-testid="taskList" aria-labelledby="todos">
+        {todos ? todos.map((todo, i) => (
+          <li data-testid="taskItem">
             <div className={style.taskGrid}>
               <Checkbox />
-              <input className={style.taskName} onChange={(ev) => editTodo(i, ev.target.value)} value={todo.title} />
+              <input data-testid="taskInput" className={style.taskName} onChange={(ev) => editTodo(i, ev.target.value)} value={todo.title} />
               <button type="button" aria-label="removeTodo" onClick={() => removeTodo(i)} className={style.taskDelete}><img alt="" src="../../icon-cross.svg" /></button>
             </div>
           </li>
-        ))}
+        )) : <div className={style.taskGrid} />}
       </ul>
     </div>
   );

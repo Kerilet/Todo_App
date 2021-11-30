@@ -15,7 +15,7 @@ const App = function () {
   } = useContext(Context);
 
   return (
-    <div className={[style.App, theme].join(' ')}>
+    <div className={[style.App, theme].join(' ')} data-testid="App">
       <div className={style.mainContainer}>
 
         <div className={style.todoHeader}>
@@ -29,7 +29,7 @@ const App = function () {
         <div className={style.todoInput}>
           <form onSubmit={submitTodo}>
             <Checkbox />
-            <input type="text" onChange={changeTodo} value={todoInfo} />
+            <input data-testid="todoInput" type="text" onChange={changeTodo} value={todoInfo} />
           </form>
         </div>
         <div className={style.listNOptions}>
@@ -38,7 +38,7 @@ const App = function () {
           </div>
 
           <div className={style.optionsContainer}>
-            <div className={style.totalItems}>
+            <div className={style.totalItems} data-testid="todoCounter">
               {getTotal}
               {' '}
               items left

@@ -5,7 +5,7 @@ import React, {
   createContext, useState, useEffect, useMemo,
 } from 'react';
 
-export const Context = createContext();
+export const Context = createContext('');
 
 export default function ctx({ children }) {
   // Theme
