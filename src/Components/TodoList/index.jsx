@@ -12,7 +12,7 @@ export default () => {
     <div className={style.todoList}>
       <ul data-testid="taskList" aria-labelledby="todos">
         {todos ? todos.map((todo, i) => (
-          <li>
+          <li key={todo}>
             <div className={style.taskGrid}>
               <Checkbox />
               <input className={style.taskName} onChange={(ev) => editTodo(i, ev.target.value)} value={todo.title} />

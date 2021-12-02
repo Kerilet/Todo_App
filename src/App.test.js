@@ -4,37 +4,41 @@ import {
   render, screen, fireEvent,
 } from '@testing-library/react';
 import App from './App';
+import Provider from './context';
 
-test('app renders and text "T O D O" is found', () => {
-  render(<App />);
+test('should be able to find text "T O D O"', async () => {
+  render(<Provider><App /></Provider>);
   const linkElement = screen.getByText('T O D O');
   expect(linkElement).toBeInTheDocument();
 });
 
-test('app renders and todo is added to the list', async () => {
-  render(<App />);
+test('should be able to insert a new todo', async () => {
+  render(<Provider><App /></Provider>);
   await fireEvent.change(screen.getByTestId('todoInput'), { target: { value: 'Todo 1' } });
   await fireEvent.keyUp(screen.getByTestId('todoInput'), { key: 'Enter', code: 'Enter', charCode: 13 });
   const list = screen.getByDisplayValue('Todo 1');
   expect(list).toBeTruthy();
 });
 
-test('app renders, todo is added to the list and it is editable', async () => {
-  render(<App />);
-  await fireEvent.change(screen.getByTestId('todoInput'), { target: { value: 'Todo 1' } });
-  await fireEvent.keyUp(screen.getByTestId('todoInput'), { key: 'Enter', code: 'Enter', charCode: 13 });
+test('should be able to update and delete existing todos', async () => {
+  render(<Provider><App /></Provider>);
+  fireEvent.change(screen.getByTestId('todoInput'), { target: { value: 'Todo 1' } });
+  fireEvent.submit(screen.getByTestId('formTodo'));
   const list = screen.getByDisplayValue('Todo 1');
   await fireEvent.change(list, { target: { value: 'Todo 2' } });
-  const updatedList = screen.getByDisplayValue('Todo 2');
-  expect(updatedList).toBeTruthy();
+  const todo = screen.getByDisplayValue('Todo 2');
+  expect(todo).toBeTruthy();
+
+  const [button] = screen.getAllByRole('button');
+  fireEvent.click(button);
+
+  const todoAgain = screen.queryByDisplayValue('Todo 2');
+  expect(todoAgain).not.toBeTruthy();
 });
 
-test('app renders, todo is added to the list and it is deletable', async () => {
-  render(<App />);
-  await fireEvent.change(screen.getByTestId('todoInput'), { target: { value: 'Todo 3' } });
-  await fireEvent.keyUp(screen.getByTestId('todoInput'), { key: 'Enter', code: 'Enter', charCode: 13 });
-  const list = screen.getByDisplayValue('Todo 3');
-  const button = screen.getAllByTitle('deleteButton');
-  console.log(button);
-  expect(button).toBeTruthy();
+test('should not be able to insert an empty todo', async () => {
+  render(<Provider><App /></Provider>);
+  await fireEvent.submit(screen.getByTestId('formTodo'));
+  const list = screen.queryByDisplayValue('Todo 1');
+  expect(list).not.toBeTruthy();
 });

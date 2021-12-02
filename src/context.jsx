@@ -9,29 +9,17 @@ export const Context = createContext('');
 
 export default function ctx({ children }) {
   // Theme
-  const [theme, setTheme] = useState('dark');
+  const [theme] = useState('dark');
 
-  const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
-  };
+  // const toggleTheme = () => {
+  //   setTheme(theme === 'dark' ? 'light' : 'dark');
+  // };
+  const toggleTheme = null;
 
   // Todos
   const todoArrayString = window.localStorage.getItem('todos') || '[]';
   const todoArray = JSON.parse(todoArrayString);
   const [todos, setTodos] = useState(todoArray);
-  const [todoInfo, setTodoInfo] = useState('');
-
-  const changeTodo = (ev) => {
-    ev.preventDefault();
-    const { value } = ev.target;
-    setTodoInfo(value);
-  };
-
-  const editTodo = (i, todoTitle) => {
-    const temp = [...todos];
-    temp[i].title = todoTitle;
-    setTodos(temp);
-  };
 
   const addTodo = (title) => {
     const todo = {
@@ -44,12 +32,10 @@ export default function ctx({ children }) {
     setTodos(newTodos);
   };
 
-  const submitTodo = (ev) => {
-    ev.preventDefault();
-    if (todoInfo) {
-      addTodo(todoInfo);
-      setTodoInfo('');
-    }
+  const editTodo = (i, todoTitle) => {
+    const temp = [...todos];
+    temp[i].title = todoTitle;
+    setTodos(temp);
   };
 
   const removeTodo = (i) => {
@@ -66,7 +52,7 @@ export default function ctx({ children }) {
   const getTotal = useMemo(() => todos.length);
 
   const values = {
-    theme, toggleTheme, todos, todoInfo, setTodoInfo, addTodo, getTotal, removeTodo, changeTodo, submitTodo, editTodo,
+    theme, toggleTheme, todos, addTodo, getTotal, removeTodo, editTodo,
   };
 
   return (

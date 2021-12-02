@@ -4,14 +4,14 @@
 /* eslint-disable func-names */
 import React, { useContext } from 'react';
 import { Context } from './context';
-import Checkbox from './Components/Checkbox';
 import style from './App.module.css';
 import Filters from './Components/Filters';
 import TodoList from './Components/TodoList';
+import TodoInput from './Components/TodoInput';
 
 const App = function () {
   const {
-    theme, getTotal, changeTodo, submitTodo, todoInfo,
+    theme, getTotal,
   } = useContext(Context);
 
   return (
@@ -25,13 +25,7 @@ const App = function () {
             {' '}
           </div>
         </div>
-
-        <div className={style.todoInput}>
-          <form onSubmit={submitTodo}>
-            <Checkbox />
-            <input data-testid="todoInput" type="text" onChange={changeTodo} value={todoInfo} />
-          </form>
-        </div>
+        <TodoInput />
         <div className={style.listNOptions}>
           <div>
             <TodoList />
