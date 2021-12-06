@@ -16,7 +16,7 @@ export default () => {
             <div className={style.taskGrid}>
               <Checkbox />
               <input className={style.taskName} onChange={(ev) => editTodo(i, ev.target.value)} value={todo.title} />
-              <button type="button" title="deleteButton" aria-label="removeTodo" onClick={() => removeTodo(i)} className={style.taskDelete}><img alt="" src="../../icon-cross.svg" /></button>
+              <button type="button" title="deleteButton" aria-label="removeTodo" onClick={() => removeTodo(i)} className={style.taskDelete}><img alt="" src="./icon-cross.svg" /></button>
             </div>
           </li>
         )) : <div className={style.taskGrid} />}
