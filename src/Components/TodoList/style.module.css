@@ -41,13 +41,19 @@
   color: #b2b4cd;
 }
 
+.taskList {
+  outline: none;
+  background: none;
+  transition: opacity 500ms ease-in-out;
+}
+
 .taskList:hover {
   border-radius: 7px;
-  background-color: #2b2e46;
+  background-color: #2b2d46;
 }
 
 .taskList:hover input {
-  background-color: #2b2e46;
+  background-color: #2b2d46;
 }
 
 .taskGrid .taskDelete{
