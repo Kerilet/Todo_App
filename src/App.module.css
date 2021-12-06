@@ -24,12 +24,46 @@
   font-weight: 700;
 }
 
+.todoImage {
+  background: none;
+  height: 0px;
+}
+
+.todoImage:hover {
+  -webkit-box-shadow: -1px 17px 18px 8px rgba(0,0,0,0.62); 
+  box-shadow: -1px 17px 18px 8px rgba(0,0,0,0.62);
+}
+
 .sunDesktop {
   font-weight: 700;
 }
 
 .App-link {
   color: #61dafb;
+}
+
+.todoInput {
+  padding-top: 10px;
+  padding-bottom: 5px;
+  margin-top: 20px;
+  background-color: #25273c;
+  border-radius: 7px;
+  -webkit-box-shadow: 0px 13px 27px 3px rgba(0,0,0,0.42);
+  box-shadow: 0px 13px 27px 3px rgba(0,0,0,0.42);
+}
+
+.todoInput input {
+  border: none;
+  outline: none;
+  width: calc(100% - 70px);
+  height: 50px;
+  color: #b2b4cd;
+  font-size: 18px;
+  background: transparent;
+}
+
+.todoInput .submitInput {
+  display: none;
 }
 
 .optionsContainer {
@@ -41,6 +75,14 @@
   height: 15px;
   border-radius: 0px 0px 7px 7px;
   font-size: 14px;
+}
+
+.clearAll {
+  color: #595a6e;
+}
+
+.clearAll:hover {
+  color: #FFF;
 }
 
 .listNOptions {

@@ -18,6 +18,10 @@
   background: transparent;
 }
 
+.todoInput:hover {
+  background-color: #2b2e46;
+}
+
 .todoInput .submitInput {
   display: none;
 }

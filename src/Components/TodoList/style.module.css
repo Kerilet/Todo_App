@@ -41,6 +41,15 @@
   color: #b2b4cd;
 }
 
+.taskList:hover {
+  border-radius: 7px;
+  background-color: #2b2e46;
+}
+
+.taskList:hover input {
+  background-color: #2b2e46;
+}
+
 .taskGrid .taskDelete{
   font-size: 18px;
   padding-top: 10px;

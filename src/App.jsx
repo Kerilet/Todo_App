@@ -20,7 +20,7 @@ const App = function () {
 
         <div className={style.todoHeader}>
           <div className={style.todoTitle}>T O D O</div>
-          <div>
+          <div className={style.todoImage}>
             <img src="./icon-sun.svg" alt="desktop-sun" className={style.sunDesktop} />
             {' '}
           </div>
