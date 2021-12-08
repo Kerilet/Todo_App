@@ -12,9 +12,9 @@ export default () => {
     <div className={style.todoList}>
       <ul data-testid="taskList" aria-labelledby="todos">
         {todos ? todos.map((todo, i) => (
-          <li className={style.taskList} key={todo}>
+          <li className={`${style.taskList} ${todo.completed ? 'completed' : ''}`} key={todo}>
             <div className={style.taskGrid}>
-              <Checkbox />
+              <Checkbox todoNumber={i} completed={todo.completed} />
               <input className={style.taskName} onChange={(ev) => editTodo(i, ev.target.value)} value={todo.title} />
               <button type="button" title="deleteButton" aria-label="removeTodo" onClick={() => removeTodo(i)} className={style.taskDelete}><img alt="" src="./icon-cross.svg" /></button>
             </div>

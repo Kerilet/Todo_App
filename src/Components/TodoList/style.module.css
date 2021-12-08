@@ -41,6 +41,11 @@
   color: #b2b4cd;
 }
 
+.todoList .taskDelete .complete {
+  text-decoration: line-through;
+  color: #9fa0b8;
+}
+
 .taskList {
   outline: none;
   background: none;

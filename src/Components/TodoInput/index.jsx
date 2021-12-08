@@ -26,7 +26,7 @@ export default () => {
     <div className={style.todoInput}>
       <div className={style.todoList}>
         <form onSubmit={submitTodo} data-testid="formTodo">
-          <Checkbox />
+          <Checkbox disabled />
           <input data-testid="todoInput" type="text" onChange={changeTodo} value={todoInfo} />
         </form>
       </div>

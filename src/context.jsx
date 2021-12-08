@@ -38,6 +38,12 @@ export default function ctx({ children }) {
     setTodos(temp);
   };
 
+  const toggleCompleted = (i) => {
+    const temp = [...todos];
+    temp[i].completed = !temp[i].completed;
+    setTodos(temp);
+  };
+
   const removeTodo = (i) => {
     const temp = [...todos];
     temp.splice(i, 1);
@@ -52,7 +58,7 @@ export default function ctx({ children }) {
   const getTotal = useMemo(() => todos.length);
 
   const values = {
-    theme, toggleTheme, todos, addTodo, getTotal, removeTodo, editTodo,
+    theme, toggleTheme, todos, addTodo, getTotal, removeTodo, editTodo, toggleCompleted,
   };
 
   return (
