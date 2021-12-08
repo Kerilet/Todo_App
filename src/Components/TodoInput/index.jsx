@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import React, { useContext, useState } from 'react';
 import { Context } from '../../context';
-import style from './style.module.css';
+import style from './style.module.scss';
 import Checkbox from '../Checkbox';
 
 export default () => {

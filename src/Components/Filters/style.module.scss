@@ -1,3 +1,5 @@
+@import '../../dark';
+
 .filters{
   width: 170px;
   display: flex;
@@ -7,11 +9,11 @@
   display: inline;
 }
 .filters li a{
-  color: #595a6e;
+  color: $filter-text;
 }
 
 .filters li a:hover, .filters li a.active{
-  color: #FFF;
+  color: $filter-hover;
 }
 
 .themeIndicator {

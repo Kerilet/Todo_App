@@ -1,8 +1,10 @@
+@import '../../dark';
+
 .todoInput {
   padding-top: 10px;
   padding-bottom: 5px;
   margin-top: 20px;
-  background-color: #25273c;
+  background-color: $background-color-input;
   border-radius: 7px;
   -webkit-box-shadow: 0px 13px 27px 3px rgba(0,0,0,0.42);
   box-shadow: 0px 13px 27px 3px rgba(0,0,0,0.42);
@@ -13,13 +15,13 @@
   outline: none;
   width: calc(100% - 70px);
   height: 50px;
-  color: #b2b4cd;
+  color: $task-text-default;
   font-size: 18px;
   background: transparent;
 }
 
 .todoInput:hover {
-  background-color: #2b2e46;
+  background-color: $background-color-input-hover;
 }
 
 .todoInput .submitInput {

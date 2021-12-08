@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Context } from '../../context';
-import style from './style.module.css';
+import style from './style.module.scss';
 
 export default () => {
   const { theme } = useContext(Context);

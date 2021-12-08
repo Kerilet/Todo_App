@@ -4,7 +4,7 @@
 /* eslint-disable func-names */
 import React, { useContext } from 'react';
 import { Context } from './context';
-import style from './App.module.css';
+import style from './App.module.scss';
 import Filters from './Components/Filters';
 import TodoList from './Components/TodoList';
 import TodoInput from './Components/TodoInput';

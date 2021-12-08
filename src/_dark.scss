@@ -1,0 +1,12 @@
+$background-color-default: #181824;
+$background-color-box: #25273c;
+$background-color-box-hover: lighten($background-color-box, 5%);
+$background-color-input: $background-color-box;
+$background-color-input-hover: $background-color-box-hover;
+$task-divider: #37394e;
+$task-text-default: #b2b4cd;
+$task-text-completed: darken($task-text-default, 5%);
+$filter-text: #595a6e;
+$filter-hover: #ffffff;
+$checkbox-color: rgb(132,202,254);
+$checkbox-gradient: linear-gradient(45deg, rgba(132,202,254,1) 0%, rgba(174,127,243,1) 100%);

@@ -1,11 +1,7 @@
-/* @media only screen and (min-width: 920px) {
-  .taskDelete img {
-    visibility: hidden;
-  }
-} */
+@import '../../dark';
 
 .todoList {
-  background-color: #25273c;
+  background-color: $background-color-box;
   border-radius: 7px;
   max-width: 545px;
   width: 100%;
@@ -19,7 +15,7 @@
 }
 
 .todoList li {
-  border-bottom: 1px solid #37394e;
+  border-bottom: 1px solid $task-divider;
   padding-top: 7px;
   padding-bottom: 7px;
 }
@@ -30,20 +26,20 @@
   height: 30px;
   text-align: left;
   width: calc(100% - 165px);
-  background-color: #25273c;
+  background-color: $background-color-input;
   border-radius: 7px;
-  color: #b2b4cd;
+  color: $task-text-default;
   outline: none;
   border: none;
 }
 
 .todoList .taskName::placeholder {
-  color: #b2b4cd;
+  color: $task-text-default;
 }
 
 .todoList .taskDelete .complete {
   text-decoration: line-through;
-  color: #9fa0b8;
+  color: $task-text-completed;
 }
 
 .taskList {
@@ -54,11 +50,11 @@
 
 .taskList:hover {
   border-radius: 7px;
-  background-color: #2b2d46;
+  background-color: $background-color-box-hover;
 }
 
 .taskList:hover input {
-  background-color: #2b2d46;
+  background-color: $background-color-box-hover;
 }
 
 .taskGrid .taskDelete{
