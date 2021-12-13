@@ -42,3 +42,11 @@ test('should not be able to insert an empty todo', async () => {
   const list = screen.queryByDisplayValue('Todo 1');
   expect(list).not.toBeTruthy();
 });
+
+test('should be able to mark a todo as completed', async () => {
+  render(<Provider><App /></Provider>);
+  await fireEvent.change(screen.getByTestId('todoInput'), { target: { value: 'Todo 1' } });
+  await fireEvent.keyUp(screen.getByTestId('todoInput'), { key: 'Enter', code: 'Enter', charCode: 13 });
+  const list = screen.queryByDisplayValue('Todo 1');
+  expect(list).not.toHaveClass('taskCompleted');
+});

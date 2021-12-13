@@ -1,18 +1,21 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useContext } from 'react';
 import { Context } from '../../context';
 import style from './style.module.css';
 
 export default () => {
-  const { theme } = useContext(Context);
+  const {
+    theme, filterAll, filterActive, filterCompleted,
+  } = useContext(Context);
   return (
     <ul className={style.filters}>
       <li>
-        <a href="javascript;" className={style.active}>
+        <button type="button" onClick={() => filterAll} className={style.filterButton}>
           All
-        </a>
+        </button>
       </li>
-      <li><a href="javascript;">Active</a></li>
-      <li><a href="javascript;">Completed</a></li>
+      <li><button type="button" className={style.filterButton} onClick={() => filterActive()}>Active</button></li>
+      <li><button type="button" className={style.filterButton} onClick={() => filterCompleted()}>Completed</button></li>
       <div className={style.themeIndicator}>{theme}</div>
     </ul>
   );

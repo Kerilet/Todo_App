@@ -9,7 +9,9 @@ export default function c({ todoNumber, completed, disabled }) {
 
   return (
     <div className={`${style.todoCheckbox} ${completed ? 'completed' : ''}`}>
-      <button aria-label="check" onClick={() => (disabled ? null : toggleCompleted(todoNumber))} type="button" className={completed ? '' : style.todoCheckboxFill} />
+      <button aria-label="check" onClick={() => (disabled ? null : toggleCompleted(todoNumber))} type="button" className={completed ? style.todoCheckboxCompleted : style.todoCheckboxFill}>
+        {completed ? <img alt="" src="./icon-check.svg" /> : ''}
+      </button>
     </div>
   );
 }
