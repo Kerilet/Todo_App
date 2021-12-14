@@ -24,14 +24,13 @@ test('should be able to update and delete existing todos', async () => {
   render(<Provider><App /></Provider>);
   fireEvent.change(screen.getByTestId('todoInput'), { target: { value: 'Todo 1' } });
   fireEvent.submit(screen.getByTestId('formTodo'));
-  const list = screen.getByDisplayValue('Todo 1');
-  await fireEvent.change(list, { target: { value: 'Todo 2' } });
+  const item = screen.getByDisplayValue('Todo 1');
+  await fireEvent.change(item, { target: { value: 'Todo 2' } });
   const todo = screen.getByDisplayValue('Todo 2');
   expect(todo).toBeTruthy();
 
-  const [button] = screen.getAllByRole('button');
-  fireEvent.click(button);
-
+  const [deleteButton] = screen.getAllByRole('button');
+  fireEvent.click(deleteButton);
   const todoAgain = screen.queryByDisplayValue('Todo 2');
   expect(todoAgain).not.toBeTruthy();
 });
