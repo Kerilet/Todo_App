@@ -1,4 +1,4 @@
-.filters{
+  .filters{
   width: 170px;
   display: flex;
   justify-content: space-between;
@@ -13,13 +13,10 @@
   color: #595a6e;
 }
 
-.filters li .filterButton:hover{
+.filters li .filterButton:hover, .filters li .filterButton.active {
   color: #FFF;
 }
 
-.filters .filterButton:focus {
-  color: #fff;
-}
 
 .themeIndicator {
   display: none;

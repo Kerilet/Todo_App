@@ -5,17 +5,24 @@ import style from './style.module.css';
 
 export default () => {
   const {
-    theme, filterAll, filterActive, filterCompleted,
+    theme, activeFilter, setActiveFilter,
   } = useContext(Context);
+
+  const isActive = (filter) => `${style.filterButton} ${activeFilter === filter ? style.active : ''}`;
+  const setFilter = (ev, filter) => {
+    ev.preventDefault();
+    setActiveFilter(filter);
+  };
+
   return (
     <ul className={style.filters}>
       <li>
-        <button type="button" onClick={() => filterAll} className={style.filterButton}>
+        <a href="" onClick={(ev) => setFilter(ev, 'ALL')} className={isActive('ALL')}>
           All
-        </button>
+        </a>
       </li>
-      <li><button type="button" className={style.filterButton} onClick={() => filterActive()}>Active</button></li>
-      <li><button type="button" className={style.filterButton} onClick={() => filterCompleted()}>Completed</button></li>
+      <li><a href="" className={isActive('ACTIVE')} onClick={(ev) => setFilter(ev, 'ACTIVE')}>Active</a></li>
+      <li><a href="" className={isActive('COMPLETED')} onClick={(ev) => setFilter(ev, 'COMPLETED')}>Completed</a></li>
       <div className={style.themeIndicator}>{theme}</div>
     </ul>
   );

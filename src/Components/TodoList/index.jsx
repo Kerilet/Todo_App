@@ -6,16 +6,16 @@ import Checkbox from '../Checkbox';
 
 export default () => {
   const {
-    todos, removeTodo, editTodo,
+    filteredTodos, removeTodo, editTodo,
   } = useContext(Context);
   return (
     <div className={style.todoList}>
       <ul data-testid="taskList" aria-labelledby="todos">
-        {todos ? todos.map((todo, i) => (
+        {filteredTodos ? filteredTodos.map((todo, i) => (
           <li className={`${style.taskList} ${todo.completed ? 'completed' : ''}`} key={todo}>
             <div className={style.taskGrid}>
               <Checkbox todoNumber={i} completed={todo.completed} />
-              <input className={`${style.taskName} ${todo.completed ? style.taskCompleted : ''}`} onChange={(ev) => editTodo(i, ev.target.value)} value={todo.title} />
+              <input className={`${style.taskName} ${todo.completed ? style.taskCompleted : ''}`} completed={todo.completed ? 'completed' : undefined} onChange={(ev) => editTodo(i, ev.target.value)} value={todo.title} />
               <button type="button" title="deleteButton" aria-label="removeTodo" onClick={() => removeTodo(i)} className={style.taskDelete}><img alt="deleteBtn" src="./icon-cross.svg" /></button>
             </div>
           </li>

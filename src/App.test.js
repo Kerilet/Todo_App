@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable react/react-in-jsx-scope */
 import {
-  render, screen, fireEvent,
+  render, screen, fireEvent, prettyDOM,
 } from '@testing-library/react';
 import App from './App';
 import Provider from './context';
@@ -45,7 +45,9 @@ test('should not be able to insert an empty todo', async () => {
 test('should be able to mark a todo as completed', async () => {
   render(<Provider><App /></Provider>);
   await fireEvent.change(screen.getByTestId('todoInput'), { target: { value: 'Todo 1' } });
-  await fireEvent.keyUp(screen.getByTestId('todoInput'), { key: 'Enter', code: 'Enter', charCode: 13 });
-  const list = screen.queryByDisplayValue('Todo 1');
-  expect(list).not.toHaveClass('taskCompleted');
+  fireEvent.submit(screen.getByTestId('formTodo'));
+  const item = screen.getByDisplayValue('Todo 1');
+  const [, list] = screen.getAllByRole('checkbox');
+  fireEvent.click(list)
+  expect(item).toHaveClass('taskCompleted');
 });

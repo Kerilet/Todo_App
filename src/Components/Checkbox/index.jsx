@@ -9,7 +9,7 @@ export default function c({ todoNumber, completed, disabled }) {
 
   return (
     <div className={`${style.todoCheckbox} ${completed ? style.completed : ''} ${disabled ? style.disabled : ''}`}>
-      <input type="checkbox" disabled={disabled} checked={completed} onClick={() => (disabled ? null : toggleCompleted(todoNumber))} />
+      <input type="checkbox" disabled={disabled} checked={completed} onChange={() => (disabled ? null : toggleCompleted(todoNumber))} />
       {completed && <img src="./icon-check.svg" alt="Checked" />}
     </div>
   );

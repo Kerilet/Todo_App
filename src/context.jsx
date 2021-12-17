@@ -18,9 +18,8 @@ export default function ctx({ children }) {
 
   // Todos
   const todoArrayString = window.localStorage.getItem('todos') || '[]';
-  const todoArray = JSON.parse(todoArrayString);
-  const [todos, setTodos] = useState(todoArray);
-  const [filtered, setFiltered] = useState(todoArray);
+  const [todos, setTodos] = useState(JSON.parse(todoArrayString));
+  const [activeFilter, setActiveFilter] = useState('ALL');
 
   const addTodo = (title) => {
     const todo = {
@@ -53,11 +52,7 @@ export default function ctx({ children }) {
 
   useEffect(() => {
     const todosString = JSON.stringify(todos);
-    const filteredTodosString = JSON.stringify(filtered);
     window.localStorage.setItem('todos', todosString);
-    window.localStorage.setItem('filteredTodos', filteredTodosString);
-    const updatedTodos = [...todos];
-    setFiltered(updatedTodos);
   }, [todos]);
 
   const getTotal = useMemo(() => {
@@ -71,34 +66,18 @@ export default function ctx({ children }) {
     return total.length;
   });
 
-  // Filters
-  const filterAll = () => {
-    const temp = [...todos];
-    setFiltered(temp);
-  };
-
-  const filterActive = () => {
-    const temp = [];
-    for (let i = 0; i < todos.length; i++) {
-      if (todos[i].completed === false) {
-        temp.push(todos[i]);
-      }
+  const filteredTodos = useMemo(() => todos.filter((todo) => {
+    if (activeFilter === 'ACTIVE') {
+      return !todo.completed;
     }
-    setFiltered(temp);
-  };
-
-  const filterCompleted = () => {
-    const temp = [];
-    for (let i = 0; i < todos.length; i++) {
-      if (todos[i].completed) {
-        temp.push(todos[i]);
-      }
+    if (activeFilter === 'COMPLETED') {
+      return todo.completed;
     }
-    setFiltered(temp);
-  };
+    return true;
+  }));
 
   const values = {
-    theme, toggleTheme, todos, addTodo, getTotal, removeTodo, editTodo, toggleCompleted, filterAll, filterActive, filterCompleted,
+    theme, toggleTheme, todos, addTodo, getTotal, removeTodo, editTodo, toggleCompleted, activeFilter, setActiveFilter, filteredTodos,
   };
 
   return (
