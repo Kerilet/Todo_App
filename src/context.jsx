@@ -50,11 +50,23 @@ export default function ctx({ children }) {
     setTodos(temp);
   };
 
+  const clearCompleted = () => {
+    const temp = [...todos];
+    for (let i = 0; i < temp.length; i++) {
+      if (temp[i].completed) {
+        temp.splice(i, 1);
+      }
+    }
+    setTodos(temp);
+  };
+
+  // LocalStorage
   useEffect(() => {
     const todosString = JSON.stringify(todos);
     window.localStorage.setItem('todos', todosString);
   }, [todos]);
 
+  // Counting
   const getTotal = useMemo(() => {
     const total = [];
     const temp = [...todos];
@@ -66,6 +78,7 @@ export default function ctx({ children }) {
     return total.length;
   });
 
+  // Filters
   const filteredTodos = useMemo(() => todos.filter((todo) => {
     if (activeFilter === 'ACTIVE') {
       return !todo.completed;
@@ -77,7 +90,7 @@ export default function ctx({ children }) {
   }));
 
   const values = {
-    theme, toggleTheme, todos, addTodo, getTotal, removeTodo, editTodo, toggleCompleted, activeFilter, setActiveFilter, filteredTodos,
+    theme, toggleTheme, todos, addTodo, getTotal, removeTodo, editTodo, toggleCompleted, activeFilter, setActiveFilter, filteredTodos, clearCompleted,
   };
 
   return (

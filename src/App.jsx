@@ -8,6 +8,7 @@ import style from './App.module.css';
 import Filters from './Components/Filters';
 import TodoList from './Components/TodoList';
 import TodoInput from './Components/TodoInput';
+import ClearCompleted from './Components/ClearCompleted';
 
 const App = function () {
   const {
@@ -35,10 +36,10 @@ const App = function () {
             <div className={style.totalItems} data-testid="todoCounter">
               {getTotal}
               {' '}
-              items left
+              {getTotal === 1 ? 'item left' : 'items left'}
             </div>
             <Filters />
-            <div className={style.clearAll}>Clear Completed</div>
+            <ClearCompleted />
           </div>
         </div>
       </div>

@@ -77,14 +77,6 @@
   font-size: 14px;
 }
 
-.clearAll {
-  color: #595a6e;
-}
-
-.clearAll:hover {
-  color: #FFF;
-}
-
 .listNOptions {
   -webkit-box-shadow: 0px 24px 23px 8px rgba(0,0,0,0.45);
   box-shadow: 0px 24px 23px 8px rgba(0,0,0,0.45);
