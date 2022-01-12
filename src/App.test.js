@@ -80,15 +80,20 @@ test('should be able to filter existing todos so the app only shows active todos
 
 test('should be able to filter existing todos so the app only shows completed todos', async () => {
   render(<Provider><App /></Provider>);
-  fireEvent.change(screen.getByTestId('todoInput'), { target: { value: 'Todo 1' } });
-  fireEvent.submit(screen.getByTestId('formTodo'));
-  fireEvent.change(screen.getByTestId('todoInput'), { target: { value: 'Todo 2' } });
-  fireEvent.submit(screen.getByTestId('formTodo'));
-
   const [, , completed] = screen.getAllByRole('link');
   fireEvent.click(completed);
 
   expect(screen.queryByDisplayValue('Todo 1')).toBeTruthy();
   expect(screen.queryByDisplayValue('Todo 2')).toBeTruthy();
   expect(screen.queryByDisplayValue('Todo 3')).not.toBeTruthy();
+});
+
+test('should be able to clear all the existing and completed todos', async () => {
+  render(<Provider><App /></Provider>);
+  const [, , , cleared] = screen.getAllByRole('link');
+  fireEvent.click(cleared);
+
+  expect(screen.queryByDisplayValue('Todo 1')).not.toBeTruthy();
+  expect(screen.queryByDisplayValue('Todo 2')).not.toBeTruthy();
+  expect(screen.queryByDisplayValue('Todo 3')).toBeTruthy();
 });

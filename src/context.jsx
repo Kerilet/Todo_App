@@ -51,13 +51,7 @@ export default function ctx({ children }) {
   };
 
   const clearCompleted = () => {
-    const temp = [...todos];
-    for (let i = 0; i < temp.length; i++) {
-      if (temp[i].completed) {
-        temp.splice(i, 1);
-      }
-    }
-    setTodos(temp);
+    setTodos(todos.filter((todo) => !todo.completed));
   };
 
   // LocalStorage
