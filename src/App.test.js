@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable react/react-in-jsx-scope */
 import {
-  render, screen, fireEvent,
+  render, screen, fireEvent, waitForElementToBeRemoved, prettyDOM,
 } from '@testing-library/react';
 import App from './App';
 import Provider from './context';
@@ -31,7 +31,9 @@ test('should be able to update and delete existing todos', async () => {
 
   const [deleteButton] = screen.getAllByRole('button');
   fireEvent.click(deleteButton);
-  const todoAgain = screen.queryByDisplayValue('Todo 2');
+  const todo2 = await screen.queryByDisplayValue('Todo 2');
+  await waitForElementToBeRemoved(todo2);
+  const todoAgain = await screen.queryByDisplayValue('Todo 2');
   expect(todoAgain).not.toBeTruthy();
 });
 
@@ -73,8 +75,11 @@ test('should be able to filter existing todos so the app only shows active todos
   const [, active] = screen.getAllByRole('link');
   fireEvent.click(active);
 
-  expect(screen.queryByDisplayValue('Todo 1')).not.toBeTruthy();
-  expect(screen.queryByDisplayValue('Todo 2')).not.toBeTruthy();
+  const els = [
+    waitForElementToBeRemoved(screen.queryByDisplayValue('Todo 1')),
+    waitForElementToBeRemoved(screen.queryByDisplayValue('Todo 2')),
+  ];
+  await Promise.all(els);
   expect(todo3).toBeTruthy();
 });
 
@@ -82,10 +87,10 @@ test('should be able to filter existing todos so the app only shows completed to
   render(<Provider><App /></Provider>);
   const [, , completed] = screen.getAllByRole('link');
   fireEvent.click(completed);
+  await waitForElementToBeRemoved(screen.queryByDisplayValue('Todo 3'));
 
   expect(screen.queryByDisplayValue('Todo 1')).toBeTruthy();
   expect(screen.queryByDisplayValue('Todo 2')).toBeTruthy();
-  expect(screen.queryByDisplayValue('Todo 3')).not.toBeTruthy();
 });
 
 test('should be able to clear all the existing and completed todos', async () => {
@@ -93,7 +98,10 @@ test('should be able to clear all the existing and completed todos', async () =>
   const [, , , cleared] = screen.getAllByRole('link');
   fireEvent.click(cleared);
 
-  expect(screen.queryByDisplayValue('Todo 1')).not.toBeTruthy();
-  expect(screen.queryByDisplayValue('Todo 2')).not.toBeTruthy();
+  const els = [
+    waitForElementToBeRemoved(screen.queryByDisplayValue('Todo 1')),
+    waitForElementToBeRemoved(screen.queryByDisplayValue('Todo 2')),
+  ];
+  await Promise.all(els);
   expect(screen.queryByDisplayValue('Todo 3')).toBeTruthy();
 });

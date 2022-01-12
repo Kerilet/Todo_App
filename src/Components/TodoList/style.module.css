@@ -51,10 +51,14 @@
   color: #9fa0b8;
 }
 
+
+
 .taskList {
   outline: none;
   background: none;
   transition: opacity 500ms ease-in-out;
+  height: 40px;
+  overflow: hidden;
 }
 
 .taskList:hover {
@@ -65,6 +69,27 @@
 .taskList:hover input {
   background-color: #2b2d46;
 }
+
+.itemEnter {
+  opacity: 0;
+  height: 0;
+}
+.itemEnterActive {
+  opacity: 1;
+  transition: all 500ms ease-in-out;
+  height: 40px;
+}
+.itemExit {
+  opacity: 1;
+  height: 40px;
+}
+.itemExitActive {
+  opacity: 0;
+  transition: all 500ms ease-in-out;
+  height: 0;
+
+}
+
 
 .taskGrid .taskDelete{
   font-size: 18px;
