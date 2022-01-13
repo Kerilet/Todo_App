@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable react/react-in-jsx-scope */
 import {
-  render, screen, fireEvent, waitForElementToBeRemoved, prettyDOM,
+  render, screen, fireEvent, waitForElementToBeRemoved,
 } from '@testing-library/react';
 import App from './App';
 import Provider from './context';
