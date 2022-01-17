@@ -38,10 +38,14 @@ const App = function () {
               {' '}
               {getTotal === 1 ? 'item left' : 'items left'}
             </div>
-            <Filters />
+
+            <div className={style.filterLinks}><Filters /></div>
+
             <ClearCompleted />
           </div>
+
         </div>
+        <div className={style.filtersDiv}><Filters /></div>
       </div>
       <div className={style.dragDrop}>Drag and drop to reorder list</div>
 
