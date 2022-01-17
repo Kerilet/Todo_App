@@ -1,0 +1,23 @@
+  .filters{
+  width: 170px;
+  display: flex;
+  justify-content: space-between;
+}
+.filters li{
+  display: inline;
+}
+.filters li .filterButton{
+  font-family: 'Josefin Sans';
+  border: none;
+  background: none;
+  color: #595a6e;
+}
+
+.filters li .filterButton:hover, .filters li .filterButton.active {
+  color: #FFF;
+}
+
+
+.themeIndicator {
+  display: none;
+}

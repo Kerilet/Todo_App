@@ -1,0 +1,118 @@
+/* @media only screen and (min-width: 920px) {
+  .taskDelete img {
+    visibility: hidden;
+  }
+} */
+
+.todoList {
+  background-color: #25273c;
+  border-radius: 7px;
+  max-width: 545px;
+  width: 100%;
+  margin-top: 40px;
+
+}
+
+.todoList .taskGrid {
+  display: flex;
+  justify-content: space-between;
+}
+
+.todoList li {
+  border-bottom: 1px solid #37394e;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.todoList .taskName{
+  font-size: 20px;
+  padding-top: 10px;
+  height: 30px;
+  text-align: left;
+  width: calc(100% - 165px);
+  background-color: #25273c;
+  border-radius: 7px;
+  color: #b2b4cd;
+  outline: none;
+  border: none;
+}
+
+.todoList .taskName::placeholder {
+  color: #b2b4cd;
+}
+
+.todoList .taskCompleted {
+  text-decoration: line-through;
+  color: #b2b4cdb4;
+}
+
+.todoList .taskDelete .complete {
+  text-decoration: line-through;
+  color: #9fa0b8;
+}
+
+
+
+.taskList {
+  outline: none;
+  background: none;
+  transition: opacity 500ms ease-in-out;
+  height: 40px;
+  overflow: hidden;
+}
+
+.taskList:hover {
+  border-radius: 7px;
+  background-color: #2b2d46;
+}
+
+.taskList:hover input {
+  background-color: #2b2d46;
+}
+
+.itemEnter {
+  opacity: 0;
+  height: 0;
+}
+.itemEnterActive {
+  opacity: 1;
+  transition: all 500ms ease-in-out;
+  height: 40px;
+}
+.itemExit {
+  opacity: 1;
+  height: 40px;
+}
+.itemExitActive {
+  opacity: 0;
+  transition: all 500ms ease-in-out;
+  height: 0;
+
+}
+
+
+.taskGrid .taskDelete{
+  font-size: 18px;
+  padding-top: 10px;
+  margin-left: 50px;
+  margin-right: 15px;
+  height: 30px;
+  text-align: center;
+  margin-top: 5px;
+  border: none;
+  outline: none;
+  background: none;
+  opacity: 0;
+  transition: opacity 500ms ease-in-out;
+}
+
+.taskGrid:hover .taskDelete{
+  opacity: 1;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 540px) {
+  .taskGrid .taskDelete{
+    opacity: 1;
+  }
+}
