@@ -1,20 +1,38 @@
+<<<<<<< HEAD:src/Components/Filters/style.module.scss
 @import '../../dark';
 
 .filters{
+=======
+  .filters{
+>>>>>>> develop:src/Components/Filters/style.module.css
   width: 170px;
   display: flex;
   justify-content: space-between;
+  margin: auto;
 }
 .filters li{
   display: inline;
 }
+<<<<<<< HEAD:src/Components/Filters/style.module.scss
 .filters li a{
   color: $filter-text;
 }
 
 .filters li a:hover, .filters li a.active{
   color: $filter-hover;
+=======
+.filters li .filterButton{
+  font-family: 'Josefin Sans';
+  border: none;
+  background: none;
+  color: #595a6e;
 }
+
+.filters li .filterButton:hover, .filters li .filterButton.active {
+  color: #FFF;
+>>>>>>> develop:src/Components/Filters/style.module.css
+}
+
 
 .themeIndicator {
   display: none;

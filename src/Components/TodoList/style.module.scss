@@ -21,7 +21,7 @@
 }
 
 .todoList .taskName{
-  font-size: 18px;
+  font-size: 20px;
   padding-top: 10px;
   height: 30px;
   text-align: left;
@@ -37,15 +37,24 @@
   color: $task-text-default;
 }
 
+.todoList .taskCompleted {
+  text-decoration: line-through;
+  color: #b2b4cdb4;
+}
+
 .todoList .taskDelete .complete {
   text-decoration: line-through;
   color: $task-text-completed;
 }
 
+
+
 .taskList {
   outline: none;
   background: none;
   transition: opacity 500ms ease-in-out;
+  height: 40px;
+  overflow: hidden;
 }
 
 .taskList:hover {
@@ -56,6 +65,27 @@
 .taskList:hover input {
   background-color: $background-color-box-hover;
 }
+
+.itemEnter {
+  opacity: 0;
+  height: 0;
+}
+.itemEnterActive {
+  opacity: 1;
+  transition: all 500ms ease-in-out;
+  height: 40px;
+}
+.itemExit {
+  opacity: 1;
+  height: 40px;
+}
+.itemExitActive {
+  opacity: 0;
+  transition: all 500ms ease-in-out;
+  height: 0;
+
+}
+
 
 .taskGrid .taskDelete{
   font-size: 18px;
