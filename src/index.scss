@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+@import 'variables';
+
 
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
@@ -53,4 +55,8 @@ table {
 
 html, body {
   height: 100%;
+}
+
+#root {
+  height: 100%
 }

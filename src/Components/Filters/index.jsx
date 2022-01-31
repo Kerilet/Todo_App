@@ -15,15 +15,17 @@ export default () => {
   };
 
   return (
-    <ul className={style.filters}>
-      <li>
-        <a href="" onClick={(ev) => setFilter(ev, 'ALL')} className={isActive('ALL')}>
-          All
-        </a>
-      </li>
-      <li><a href="" className={isActive('ACTIVE')} onClick={(ev) => setFilter(ev, 'ACTIVE')}>Active</a></li>
-      <li><a href="" className={isActive('COMPLETED')} onClick={(ev) => setFilter(ev, 'COMPLETED')}>Completed</a></li>
-      <div className={style.themeIndicator}>{theme}</div>
-    </ul>
+    <div className={theme === 'dark' ? style.dark : style.light}>
+      <ul className={style.filters}>
+        <li>
+          <a href="" onClick={(ev) => setFilter(ev, 'ALL')} className={isActive('ALL')}>
+            All
+          </a>
+        </li>
+        <li><a href="" className={isActive('ACTIVE')} onClick={(ev) => setFilter(ev, 'ACTIVE')}>Active</a></li>
+        <li><a href="" className={isActive('COMPLETED')} onClick={(ev) => setFilter(ev, 'COMPLETED')}>Completed</a></li>
+        <div className={style.themeIndicator}>{theme}</div>
+      </ul>
+    </div>
   );
 };

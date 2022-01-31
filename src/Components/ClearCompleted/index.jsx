@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useContext } from 'react';
 import { Context } from '../../context';
-import style from './style.module.css';
+import style from './style.module.scss';
 
 export default () => {
   const {
-    clearCompleted,
+    clearCompleted, theme,
   } = useContext(Context);
 
   const clearTodos = (ev) => {
@@ -14,6 +14,8 @@ export default () => {
   };
 
   return (
-    <a href="" className={style.clearAll} onClick={(e) => clearTodos(e)}>Clear Completed</a>
+    <div className={theme === 'dark' ? style.dark : style.light}>
+      <a href="" className={style.clearAll} onClick={(e) => clearTodos(e)}>Clear Completed</a>
+    </div>
   );
 };

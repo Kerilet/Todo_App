@@ -1,10 +1,17 @@
-<<<<<<< HEAD:src/Components/Filters/style.module.scss
-@import '../../dark';
+@import '../../variables';
+
+@each $theme-color, $v in $theme-colors {
+  .#{$theme-color} {
+      .filters li .filterButton{
+        color: theme-color($theme-color, 'text-primary');
+      }
+      .filters li .filterButton:hover {
+        color: theme-color($theme-color, 'text-secondary')
+      }
+  }
+}
 
 .filters{
-=======
-  .filters{
->>>>>>> develop:src/Components/Filters/style.module.css
   width: 170px;
   display: flex;
   justify-content: space-between;
@@ -13,26 +20,16 @@
 .filters li{
   display: inline;
 }
-<<<<<<< HEAD:src/Components/Filters/style.module.scss
-.filters li a{
-  color: $filter-text;
-}
-
-.filters li a:hover, .filters li a.active{
-  color: $filter-hover;
-=======
 .filters li .filterButton{
   font-family: 'Josefin Sans';
   border: none;
-  background: none;
-  color: #595a6e;
+  background: none
 }
 
-.filters li .filterButton:hover, .filters li .filterButton.active {
-  color: #FFF;
->>>>>>> develop:src/Components/Filters/style.module.css
+.filters li .filterButton.active {
+  color: #4b7eff;
+  font-weight: bold;
 }
-
 
 .themeIndicator {
   display: none;

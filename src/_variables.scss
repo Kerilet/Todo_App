@@ -1,0 +1,35 @@
+$theme-colors: (
+  'dark': (
+    'background-primary': #181824,
+    'background-secondary': #25273c,
+    'background-hover': lighten(#181824, 5%),
+    'text-primary': #595a6e,
+    'text-secondary': #b2b4cd,
+    'text-completed': darken(#b2b4cd, 5%),
+    'clear-hover': #fff,
+    'image-url': url('./bg-desktop-dark.jpg'),
+    'checkbox': #515263,
+    'todo-separator': #37394e,
+  ),
+  'light': (
+    'background-primary': #f6f6f8,
+    'background-secondary': #FFF,
+    'background-hover': darken(#FFF, 5%),
+    'text-primary': #969697,
+    'text-secondary': #4d4b5f,
+    'text-completed': darken(#4d4b5f, 5%),
+    'clear-hover': #4d4b5f,
+    'image-url': url('./bg-desktop-light.jpg'),
+    'checkbox': #c6c9f5,
+    'todo-separator': #ececef,
+  ),
+);
+
+$default-transition: all 500ms ease;
+
+@function theme-color($key: 'primary', $variant: 'base') {
+  $map: map-get($theme-colors, $key);
+  @return map-get($map, $variant);
+}
+
+// para funcionar, crie uma div abracando tudo com o devido tema

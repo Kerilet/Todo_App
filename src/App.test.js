@@ -1,3 +1,5 @@
+/* eslint-disable import/no-named-as-default */
+/* eslint-disable import/no-named-as-default-member */
 /* eslint-disable no-undef */
 /* eslint-disable react/react-in-jsx-scope */
 import {
@@ -104,4 +106,44 @@ test('should be able to clear all the existing and completed todos', async () =>
   ];
   await Promise.all(els);
   expect(screen.queryByDisplayValue('Todo 3')).toBeTruthy();
+});
+
+test('should be able to change themes', async () => {
+  render(<Provider><App /></Provider>);
+  const item = screen.getByDisplayValue('Todo 3');
+  await fireEvent.change(item, { target: { value: 'Todo 1' } });
+  const [themeImage] = screen.getAllByRole('img');
+  expect(themeImage.className).toBe('moonDesktop');
+  fireEvent.click(themeImage);
+  expect(themeImage.className).toBe('sunDesktop');
+});
+
+test('should be able to change themes', async () => {
+  render(<Provider><App /></Provider>);
+  const item = screen.getByDisplayValue('Todo 3');
+  await fireEvent.change(item, { target: { value: 'Todo 1' } });
+  const [themeImage] = screen.getAllByRole('img');
+  expect(themeImage.className).toBe('moonDesktop');
+  fireEvent.click(themeImage);
+  expect(themeImage.className).toBe('sunDesktop');
+});
+
+test('should be able to drag and drop', async () => {
+  render(<Provider><App /></Provider>);
+  fireEvent.change(screen.getByTestId('todoInput'), { target: { value: 'Todo 1' } });
+  fireEvent.submit(screen.getByTestId('formTodo'));
+  fireEvent.change(screen.getByTestId('todoInput'), { target: { value: 'Todo 2' } });
+  fireEvent.submit(screen.getByTestId('formTodo'));
+  fireEvent.change(screen.getByTestId('todoInput'), { target: { value: 'Todo 3' } });
+  fireEvent.submit(screen.getByTestId('formTodo'));
+
+  const [themeImage] = screen.getAllByRole('img');
+  expect(themeImage.className).toBe('moonDesktop');
+  fireEvent.click(themeImage);
+  expect(themeImage.className).toBe('sunDesktop');
+
+  const item = screen.getByDisplayValue('Todo 1');
+  const [, list] = screen.getAllByRole('checkbox');
+  fireEvent.click(list);
+  expect(item).toHaveClass('taskCompleted');
 });

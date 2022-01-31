@@ -1,0 +1,12 @@
+@import '../../variables';
+
+@each $theme-color, $v in $theme-colors {
+  .#{$theme-color} {
+      .clearAll {
+          color: theme-color($theme-color, 'text-primary');
+      }
+      .clearAll:hover {
+          color: theme-color($theme-color, 'clear-hover');
+      }
+  }
+}

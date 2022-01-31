@@ -1,33 +1,30 @@
 $theme-colors: (
-  'primary': (
-    'base': #384ea9,
-    'light': #e4efff,
-    'dark': #273677
+  'dark': (
+    'background-primary': #384ea9,
+    'border-primary': #e4efff,
+    'text-primary': #273677
   ),
-  'accent': (
-    'base': #f08110,
-    'light': #ff8100,
-    'dark': #e47f17
+  'light': (
+    'background-primary': #f08110,
+    'border-primary': #ff8100,
+    'text-primary': #e47f17
   ),
-  'foreground': (
-    'base': #393939,
-    'light': #6e6e6e,
-    'dark': #111
-  )
 );
 
 @function theme-color($key: 'primary', $variant: 'base') {
   $map: map-get($theme-colors, $key);
   @return map-get($map, $variant);
 }
+
+// Use on single scss files
 @each $theme-color, $v in $theme-colors {
     .#{$theme-color} {
         .button {
-            background-color: theme-color($theme-color, 'light') !important;
-            border: 1px solid theme-color($theme-color, 'base');
+            background-color: theme-color($theme-color, 'background-primary') !important;
+            border: 1px solid theme-color($theme-color, 'border-primary');
         }
         .input-form {
-            background-color: theme-color($theme-color, 'base');
+            background-color: theme-color($theme-color, 'text-primary');
         }
     }
 }

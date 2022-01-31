@@ -9,12 +9,12 @@ export const Context = createContext('');
 
 export default function ctx({ children }) {
   // Theme
-  const [theme] = useState('dark');
+  const currentTheme = window.localStorage.getItem('theme');
+  const [theme, setTheme] = useState(JSON.parse(currentTheme));
 
-  // const toggleTheme = () => {
-  //   setTheme(theme === 'dark' ? 'light' : 'dark');
-  // };
-  const toggleTheme = null;
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
 
   // Todos
   const todoArrayString = window.localStorage.getItem('todos') || '[]';
@@ -54,11 +54,21 @@ export default function ctx({ children }) {
     setTodos(todos.filter((todo) => !todo.completed));
   };
 
+  const changeOrder = (orderedList) => {
+    const newList = orderedList.map((item, i) => ({ ...item, order: i + 1 }));
+    setTodos(newList);
+  };
+
   // LocalStorage
   useEffect(() => {
     const todosString = JSON.stringify(todos);
     window.localStorage.setItem('todos', todosString);
   }, [todos]);
+
+  useEffect(() => {
+    const themeString = JSON.stringify(theme);
+    window.localStorage.setItem('theme', themeString);
+  }, [theme]);
 
   // Counting
   const getTotal = useMemo(() => {
@@ -84,7 +94,7 @@ export default function ctx({ children }) {
   }));
 
   const values = {
-    theme, toggleTheme, todos, addTodo, getTotal, removeTodo, editTodo, toggleCompleted, activeFilter, setActiveFilter, filteredTodos, clearCompleted,
+    theme, toggleTheme, todos, addTodo, getTotal, removeTodo, editTodo, toggleCompleted, activeFilter, setActiveFilter, filteredTodos, clearCompleted, changeOrder,
   };
 
   return (

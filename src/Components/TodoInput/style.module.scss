@@ -1,13 +1,13 @@
-@import '../../dark';
+@import '../../variables';
 
 .todoInput {
   padding-top: 10px;
   padding-bottom: 5px;
   margin-top: 20px;
-  background-color: $background-color-input;
   border-radius: 7px;
   -webkit-box-shadow: 0px 13px 27px 3px rgba(0,0,0,0.42);
   box-shadow: 0px 13px 27px 3px rgba(0,0,0,0.42);
+  transition: $default-transition;
 }
 
 .todoInput input {
@@ -15,15 +15,24 @@
   outline: none;
   width: calc(100% - 70px);
   height: 50px;
-  color: $task-text-default;
   font-size: 18px;
   background: transparent;
 }
 
-.todoInput:hover {
-  background-color: $background-color-input-hover;
-}
-
 .todoInput .submitInput {
   display: none;
+}
+
+@each $theme-color, $v in $theme-colors {
+  .#{$theme-color} {
+      .todoInput {
+        background-color: theme-color($theme-color, 'background-secondary');
+      }
+      .todoInput input {
+        color: theme-color($theme-color, 'text-secondary');
+      }
+      .todoInput:hover {
+        background-color: theme-color($theme-color, 'background-hover');
+      }
+  }
 }

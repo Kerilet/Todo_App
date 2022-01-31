@@ -1,12 +1,45 @@
-@import '../../dark';
+@import '../../variables';
+
+@each $theme-color, $v in $theme-colors {
+    .#{$theme-color} {
+        .todoList {
+            background-color: theme-color($theme-color, 'background-secondary') !important;
+            transition: $default-transition;
+        }
+        .todoList .taskName{
+            background-color: theme-color($theme-color, 'background-secondary');
+            color: theme-color($theme-color, 'text-secondary');
+            transition: $default-transition;
+        }
+        .todoList .taskName::placeholder {
+          color: theme-color($theme-color, 'text-secondary');
+        }
+        .todoList .taskCompleted {
+          color: theme-color($theme-color, 'text-completed');
+          transition: $default-transition;
+        }
+        .todoList .taskDelete .complete {
+          color: theme-color($theme-color, 'text-completed');
+          transition: $default-transition;
+        }
+        .taskList:hover {
+          color: theme-color($theme-color, 'text-secondary');
+        }
+        .taskList:hover input {
+          background-color: theme-color($theme-color, 'background-secondary');
+        }
+        .todoList li {
+          transition: $default-transition;
+          border-bottom: 1px solid theme-color($theme-color, 'todo-separator');
+        }
+    }
+}
 
 .todoList {
-  background-color: $background-color-box;
   border-radius: 7px;
   max-width: 545px;
   width: 100%;
   margin-top: 40px;
-
 }
 
 .todoList .taskGrid {
@@ -15,7 +48,6 @@
 }
 
 .todoList li {
-  border-bottom: 1px solid $task-divider;
   padding-top: 7px;
   padding-bottom: 7px;
 }
@@ -26,28 +58,18 @@
   height: 30px;
   text-align: left;
   width: calc(100% - 165px);
-  background-color: $background-color-input;
   border-radius: 7px;
-  color: $task-text-default;
   outline: none;
   border: none;
 }
 
-.todoList .taskName::placeholder {
-  color: $task-text-default;
-}
-
 .todoList .taskCompleted {
   text-decoration: line-through;
-  color: #b2b4cdb4;
 }
 
 .todoList .taskDelete .complete {
   text-decoration: line-through;
-  color: $task-text-completed;
 }
-
-
 
 .taskList {
   outline: none;
@@ -59,11 +81,6 @@
 
 .taskList:hover {
   border-radius: 7px;
-  background-color: $background-color-box-hover;
-}
-
-.taskList:hover input {
-  background-color: $background-color-box-hover;
 }
 
 .itemEnter {
@@ -85,7 +102,6 @@
   height: 0;
 
 }
-
 
 .taskGrid .taskDelete{
   font-size: 18px;

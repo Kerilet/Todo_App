@@ -6,7 +6,7 @@ import Checkbox from '../Checkbox';
 
 export default () => {
   const [todoInfo, setTodoInfo] = useState('');
-  const { addTodo } = useContext(Context);
+  const { addTodo, theme } = useContext(Context);
 
   const changeTodo = (ev) => {
     ev.preventDefault();
@@ -22,15 +22,15 @@ export default () => {
     }
   };
   return (
-
-    <div className={style.todoInput}>
-      <div className={style.todoList}>
-        <form onSubmit={submitTodo} data-testid="formTodo">
-          <Checkbox disabled />
-          <input data-testid="todoInput" type="text" onChange={changeTodo} value={todoInfo} />
-        </form>
+    <div className={theme === 'dark' ? style.dark : style.light}>
+      <div className={style.todoInput}>
+        <div className={style.todoList}>
+          <form onSubmit={submitTodo} data-testid="formTodo">
+            <Checkbox disabled />
+            <input data-testid="todoInput" type="text" onChange={changeTodo} value={todoInfo} />
+          </form>
+        </div>
       </div>
     </div>
-
   );
 };
